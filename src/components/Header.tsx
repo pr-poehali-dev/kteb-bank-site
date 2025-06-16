@@ -1,57 +1,85 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
   return (
     <header className="bg-white shadow-sm border-b">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
               <Icon name="Building2" className="w-5 h-5 text-white" />
             </div>
             <span className="text-2xl font-bold text-primary">КТЭБ</span>
-          </div>
+          </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="/"
-              className="text-gray-700 hover:text-primary transition-colors"
+            <Link
+              to="/"
+              className={`transition-colors ${
+                isActive("/")
+                  ? "text-primary font-semibold"
+                  : "text-gray-700 hover:text-primary"
+              }`}
             >
               Главная
-            </a>
-            <a
-              href="/credits"
-              className="text-gray-700 hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/credits"
+              className={`transition-colors ${
+                isActive("/credits")
+                  ? "text-primary font-semibold"
+                  : "text-gray-700 hover:text-primary"
+              }`}
             >
               Кредиты
-            </a>
-            <a
-              href="/deposits"
-              className="text-gray-700 hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/deposits"
+              className={`transition-colors ${
+                isActive("/deposits")
+                  ? "text-primary font-semibold"
+                  : "text-gray-700 hover:text-primary"
+              }`}
             >
               Депозиты
-            </a>
-            <a
-              href="/cards"
-              className="text-gray-700 hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/cards"
+              className={`transition-colors ${
+                isActive("/cards")
+                  ? "text-primary font-semibold"
+                  : "text-gray-700 hover:text-primary"
+              }`}
             >
               Карты
-            </a>
-            <a
-              href="/about"
-              className="text-gray-700 hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/about"
+              className={`transition-colors ${
+                isActive("/about")
+                  ? "text-primary font-semibold"
+                  : "text-gray-700 hover:text-primary"
+              }`}
             >
               О банке
-            </a>
-            <a
-              href="/contacts"
-              className="text-gray-700 hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/contacts"
+              className={`transition-colors ${
+                isActive("/contacts")
+                  ? "text-primary font-semibold"
+                  : "text-gray-700 hover:text-primary"
+              }`}
             >
               Контакты
-            </a>
+            </Link>
           </nav>
 
           {/* Contact Info */}
